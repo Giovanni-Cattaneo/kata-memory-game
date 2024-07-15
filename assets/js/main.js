@@ -1,13 +1,29 @@
-console.log("Hello world")
+console.log("Hello world");
 
-let container = document.getElementById("container")
-let numbers = document.getElementsByClassName("numbers")
+let container = document.getElementById("container");
+const markup = `<div class="box"></div>`;
 
-console.log(container, numbers)
+console.log(container);
 
-for (let index = 1; index < 13; index++) {
-    console.log(index)
+let myArray = [];
 
-    container.innerHTML = index
+function start() {
+    for (let index = 1; index <= 12; index++) {
+        myArray.push(index);
+        container.insertAdjacentHTML("beforeend", markup);
+    }
 
+    let boxes = document.getElementsByClassName("box");
+    for (let index = 0; index < boxes.length; index++) {
+        const element = boxes[index];
+
+        element.insertAdjacentText("beforeend", index)
+
+        element.addEventListener("click", function () {
+            element.classList.add("red")
+        })
+        console.log(element);
+    }
 }
+
+start();
