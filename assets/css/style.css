@@ -17,6 +17,9 @@ body {
             padding: 2rem;
             width: calc((100% / 12) * 2);
             aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .red {

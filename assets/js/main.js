@@ -17,11 +17,13 @@ function start() {
     for (let index = 0; index < boxes.length; index++) {
         const element = boxes[index];
 
-        element.insertAdjacentText("beforeend", index)
 
         element.addEventListener("click", function () {
-            element.classList.add("red")
-        })
+            if (!element.classList.contains("red")) {
+                element.insertAdjacentText("beforeend", index);
+                element.classList.add("red");
+            }
+        });
         console.log(element);
     }
 }
