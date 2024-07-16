@@ -23,14 +23,27 @@ function shuffle(array) {
 
 shuffle(myArray);
 
-function verify(array) {
+function verify(array, element) {
     let redElements = document.querySelectorAll(".red")
     if (array.length == 2) {
         if (flipArray[0] == flipArray[1]) {
-            console.log("Corrispondono")
+            //console.log("Corrispondono")
+            let matchingValue = flipArray[0];
+            redElements.forEach(redElement => {
+                let iconElement = redElement.querySelector('i');
+                let iconClass = iconElement ? iconElement.className : '';
+
+                if ((matchingValue == 1 && iconClass.includes('fa-dragon')) ||
+                    (matchingValue == 2 && iconClass.includes('fa-otter')) ||
+                    (matchingValue == 3 && iconClass.includes('fa-hippo')) ||
+                    (matchingValue == 4 && iconClass.includes('fa-dog')) ||
+                    (matchingValue == 5 && iconClass.includes('fa-cat')) ||
+                    (matchingValue == 6 && iconClass.includes('fa-frog'))) {
+                    redElement.classList.add("green");
+                }
+            })
             if (!successArray.includes(flipArray[0])) {
                 successArray.push(flipArray[0])
-                console.log(successArray)
             }
             flipArray = []
         } else {
@@ -82,10 +95,9 @@ function verify(array) {
         //     }, 300)
 
         // }
-
-    }
-    if (successArray.length == 6) {
-        alert("Congratulazioni, hai vinto!");
+        if (successArray.length == 6) {
+            alert("Congratulazioni, hai vinto!");
+        }
     }
 }
 
@@ -120,7 +132,7 @@ function start() {
                 flipArray.push(myArray[index])
 
                 element.classList.add("red");
-                verify(flipArray);
+                verify(flipArray, element);
             }
         });
     }
