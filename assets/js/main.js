@@ -5,6 +5,8 @@ const markup = `<div class="box"></div>`;
 
 console.log(container);
 
+let hard = document.getElementById("hard")
+
 let myArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 let flipArray = []
@@ -26,22 +28,64 @@ function verify(array) {
     if (array.length == 2) {
         if (flipArray[0] == flipArray[1]) {
             console.log("corrispondono")
+            if (!successArray.includes(flipArray[0] || !successArray.includes(flipArray[1]))) {
+                successArray.push(flipArray[0], flipArray[1])
+                console.log(successArray)
+            }
             flipArray = []
         } else {
-            console.log("non corrispondono")
-            errors++
-            console.log(errors)
-            errorContainer.innerText = `Errori: ${errors}`
+            console.log("non corrispondono");
+            errors++;
+            console.log(errors);
+            errorContainer.innerText = `Errori: ${errors}`;
             setTimeout(() => {
-                flipArray = []
+                flipArray = [];
                 redElements.forEach(redElement => {
-                    redElement.innerHTML = "";
-                    redElement.classList.remove("red");
+                    let iconElement = redElement.querySelector('i');
+                    let iconClass = iconElement ? iconElement.className : '';
+                    let iconValue;
+
+                    if (iconClass.includes('fa-dragon')) {
+                        iconValue = 1;
+                    } else if (iconClass.includes('fa-otter')) {
+                        iconValue = 2;
+                    } else if (iconClass.includes('fa-hippo')) {
+                        iconValue = 3;
+                    } else if (iconClass.includes('fa-dog')) {
+                        iconValue = 4;
+                    } else if (iconClass.includes('fa-cat')) {
+                        iconValue = 5;
+                    } else if (iconClass.includes('fa-frog')) {
+                        iconValue = 6;
+                    }
+
+                    if (!successArray.includes(iconValue)) {
+                        redElement.innerHTML = "";
+                        redElement.classList.remove("red");
+                    }
                 });
-            }, 300)
-
+            }, 300);
         }
+        // else {  mantenere per una versione hardcore del gioco
+        //     console.log("non corrispondono")
+        //     errors++
+        //     console.log(errors)
+        //     errorContainer.innerText = Errori: ${errors}
+        //     setTimeout(() => {
+        //         flipArray = []
+        //         redElements.forEach(redElement => {
+        //             if (!successArray.includes(redElement)) {
+        //                 redElement.innerHTML = "";
+        //                 redElement.classList.remove("red");
+        //             }
+        //         });
+        //     }, 300)
 
+        // }
+
+    }
+    if (successArray.length == 12) {
+        alert("congratulazioni hai vinto")
     }
 }
 

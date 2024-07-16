@@ -13,7 +13,7 @@ body {
         aspect-ratio: 1;
 
         .box {
-            border: 1px solid black;
+            border: 1px solid red;
             padding: 2rem;
             width: calc((100% / 12) * 2);
             aspect-ratio: 1;
@@ -34,5 +34,11 @@ body {
         position: absolute;
         right: 10rem;
         top: 15rem;
+    }
+
+    #hardcore {
+        position: absolute;
+        right: 9.2rem;
+        top: 20rem;
     }
 }
