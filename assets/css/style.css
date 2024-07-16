@@ -1,6 +1,6 @@
 body {
     background-color: antiquewhite;
-    height: 100vh;
+    position: relative;
 
     #container {
         display: flex;
@@ -20,10 +20,19 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+
+            & i {
+                font-size: 3rem;
+            }
+
         }
 
-        .red {
-            background-color: red;
-        }
+    }
+
+    #error {
+        font-size: 3rem;
+        position: absolute;
+        right: 10rem;
+        top: 15rem;
     }
 }
