@@ -23,20 +23,18 @@ function shuffle(array) {
 
 shuffle(myArray);
 
-function verify(array, boxes) {
+function verify(array) {
     let redElements = document.querySelectorAll(".red")
     if (array.length == 2) {
         if (flipArray[0] == flipArray[1]) {
-            console.log("corrispondono")
-            if (!successArray.includes(flipArray[0] || !successArray.includes(flipArray[1]))) {
-                successArray.push(flipArray[0], flipArray[1])
+            console.log("Corrispondono")
+            if (!successArray.includes(flipArray[0])) {
+                successArray.push(flipArray[0])
                 console.log(successArray)
             }
             flipArray = []
         } else {
-            let goldenChild = `<i class="fa-solid fa-diamond">`
-            boxes.insertAdjacentHTML("beforeend", goldenChild)
-            console.log("non corrispondono");
+            console.log("Non corrispondono");
             errors++;
             console.log(errors);
             errorContainer.innerText = `Errori: ${errors}`;
@@ -62,7 +60,7 @@ function verify(array, boxes) {
                     }
 
                     if (!successArray.includes(iconValue)) {
-                        redElement.innerHTML = "";
+                        redElement.innerHTML = '<i class="fa-solid fa-diamond"></i>';
                         redElement.classList.remove("red");
                     }
                 });
@@ -86,8 +84,8 @@ function verify(array, boxes) {
         // }
 
     }
-    if (successArray.length == 12) {
-        alert("congratulazioni hai vinto")
+    if (successArray.length == 6) {
+        alert("Congratulazioni, hai vinto!");
     }
 }
 
@@ -99,7 +97,6 @@ function start() {
     let boxes = document.getElementsByClassName("box");
     for (let index = 0; index < boxes.length; index++) {
         const element = boxes[index];
-
 
         element.addEventListener("click", function () {
             if (!element.classList.contains("red")) {
@@ -115,17 +112,15 @@ function start() {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-hippo"></i>`);
                 } else if (myArray[index] == 4) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dog"></i>`);
-                }
-                else if (myArray[index] == 5) {
+                } else if (myArray[index] == 5) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-cat"></i>`);
-                }
-                else if (myArray[index] == 6) {
+                } else if (myArray[index] == 6) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-frog"></i>`);
                 }
                 flipArray.push(myArray[index])
 
                 element.classList.add("red");
-                verify(flipArray, boxes)
+                verify(flipArray);
             }
         });
     }
