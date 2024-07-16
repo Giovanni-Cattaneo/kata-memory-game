@@ -13,7 +13,8 @@ body {
         aspect-ratio: 1;
 
         .box {
-            border: 1px solid red;
+            border: 1px solid blue;
+            border-radius: 1rem;
             padding: 2rem;
             width: calc((100% / 12) * 2);
             aspect-ratio: 1;
@@ -22,7 +23,14 @@ body {
             align-items: center;
 
             & i {
-                font-size: 3rem;
+                font-size: 3rem
+            }
+
+            .fa-diamond {
+                color: gold;
+                border: 3px solid gold;
+                transform: rotate(45deg);
+                padding: 1rem;
             }
 
         }

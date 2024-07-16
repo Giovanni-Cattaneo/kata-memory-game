@@ -1,7 +1,7 @@
 console.log("Hello world");
 
 let container = document.getElementById("container");
-const markup = `<div class="box"></div>`;
+const markup = `<div class="box"><i class="fa-solid fa-diamond"></i></div>`;
 
 console.log(container);
 
@@ -23,7 +23,7 @@ function shuffle(array) {
 
 shuffle(myArray);
 
-function verify(array) {
+function verify(array, boxes) {
     let redElements = document.querySelectorAll(".red")
     if (array.length == 2) {
         if (flipArray[0] == flipArray[1]) {
@@ -34,6 +34,8 @@ function verify(array) {
             }
             flipArray = []
         } else {
+            let goldenChild = `<i class="fa-solid fa-diamond">`
+            boxes.insertAdjacentHTML("beforeend", goldenChild)
             console.log("non corrispondono");
             errors++;
             console.log(errors);
@@ -100,7 +102,11 @@ function start() {
 
 
         element.addEventListener("click", function () {
-            if (!element.classList.contains("red") && element.innerHTML === "") {
+            if (!element.classList.contains("red")) {
+                let child = element.querySelector(".fa-diamond")
+                if (child) {
+                    element.removeChild(child)
+                }
                 if (myArray[index] == 1) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dragon"></i>`);
                 } else if (myArray[index] == 2) {
@@ -119,7 +125,7 @@ function start() {
                 flipArray.push(myArray[index])
 
                 element.classList.add("red");
-                verify(flipArray)
+                verify(flipArray, boxes)
             }
         });
     }
