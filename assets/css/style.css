@@ -10,6 +10,10 @@ body {
         }
     }
 
+    & main {
+        position: relative;
+    }
+
     #container {
         display: flex;
         justify-content: center;
@@ -60,5 +64,14 @@ body {
         position: absolute;
         right: 9.2rem;
         top: 20rem;
+    }
+
+    #retry {
+        text-align: center;
+        font-size: 1.3rem;
+        border-radius: 0.5rem;
+        position: absolute;
+        left: 56.75rem;
+        bottom: -5rem;
     }
 }

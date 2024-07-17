@@ -15,17 +15,6 @@ let boxes = document.getElementsByClassName("box");
 
 let retry = document.getElementById("retry")
 
-retry.addEventListener("click", function () {
-    console.log("hello world")
-    console.log(boxes)
-
-    Array.from(boxes).forEach(box => {
-        box.remove();
-    });
-    shuffle(myArray)
-    start()
-})
-
 let successArray = []
 
 let errorContainer = document.getElementById("error")
@@ -157,5 +146,20 @@ function start() {
         });
     }
 }
+
+retry.addEventListener("click", function () {
+    console.log("hello world")
+    console.log(boxes)
+    if (!errors == 0) {
+        errors = 0
+        errorContainer.innerText = `Errori: ${errors}`;
+    }
+
+    Array.from(boxes).forEach(box => {
+        box.remove();
+    });
+    shuffle(myArray)
+    start()
+})
 
 start();
