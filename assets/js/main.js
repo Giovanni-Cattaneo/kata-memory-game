@@ -32,7 +32,26 @@ shuffle(myArray);
 
 function verify(array, element) {
     let redElements = document.querySelectorAll(".red")
+
+
+    // disabilita le card
+    function disableAllCards() {
+        Array.from(boxes).forEach(box => {
+            box.style.pointerEvents = 'none';
+        })
+    }
+
+    // riabilita le card
+    function enableAllCards() {
+        Array.from(boxes).forEach(box => {
+            box.style.pointerEvents = 'auto';
+        })
+
+    }
+
+
     if (array.length == 2) {
+        disableAllCards(); // appena ne abbiamo cliccate due disabilita il click
         if (flipArray[0] == flipArray[1]) {
             //console.log("Corrispondono")
             let matchingValue = flipArray[0];
@@ -53,6 +72,7 @@ function verify(array, element) {
                 successArray.push(flipArray[0])
             }
             flipArray = []
+            enableAllCards(); //riabilitiam0 le carte alla fine della verifica
         } else {
             console.log("Non corrispondono");
             errors++;
@@ -61,8 +81,8 @@ function verify(array, element) {
             setTimeout(() => {
                 flipArray = [];
                 redElements.forEach(redElement => {
-                    let iconElement = redElement.querySelector('i');
-                    let iconClass = iconElement ? iconElement.className : '';
+                    let iconElement = redElement.querySelector('i')
+                    let iconClass = iconElement ? iconElement.className : ''
                     let iconValue;
 
                     if (iconClass.includes('fa-dragon')) {
@@ -84,6 +104,7 @@ function verify(array, element) {
                         redElement.classList.remove("red");
                     }
                 });
+                enableAllCards() //riabilitiamo le carte alla fine della verifica
             }, 300);
         }
         // else {  mantenere per una versione hardcore del gioco
@@ -154,7 +175,6 @@ retry.addEventListener("click", function () {
         errors = 0
         errorContainer.innerText = `Errori: ${errors}`;
     }
-
     Array.from(boxes).forEach(box => {
         box.remove();
     });
