@@ -10,8 +10,26 @@ let hard = document.getElementById("hard")
 let myArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 let flipArray = []
+
+let boxes = document.getElementsByClassName("box");
+
+let retry = document.getElementById("retry")
+
+retry.addEventListener("click", function () {
+    console.log("hello world")
+    console.log(boxes)
+
+    Array.from(boxes).forEach(box => {
+        box.remove();
+    });
+    shuffle(myArray)
+    start()
+})
+
 let successArray = []
+
 let errorContainer = document.getElementById("error")
+
 let errors = 0
 
 function shuffle(array) {
@@ -102,11 +120,13 @@ function verify(array, element) {
 }
 
 function start() {
+
     for (let index = 0; index < myArray.length; index++) {
         container.insertAdjacentHTML("beforeend", markup);
     }
 
-    let boxes = document.getElementsByClassName("box");
+
+
     for (let index = 0; index < boxes.length; index++) {
         const element = boxes[index];
 
