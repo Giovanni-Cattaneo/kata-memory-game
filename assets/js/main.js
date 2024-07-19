@@ -123,7 +123,7 @@ function verify(array, element) {
         //     }, 300)
 
         // }
-        if (successArray.length == 6) {
+        if (successArray.length === 6) {
             alert("Congratulazioni, hai vinto!");
         }
     }
@@ -178,6 +178,7 @@ retry.addEventListener("click", function () {
     Array.from(boxes).forEach(box => {
         box.remove();
     });
+    successArray = []
     shuffle(myArray)
     start()
 })
