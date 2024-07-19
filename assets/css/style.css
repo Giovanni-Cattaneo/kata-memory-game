@@ -1,7 +1,7 @@
 body {
     background-color: antiquewhite;
     position: relative;
-    background-color: blue;
+    background-color: rgb(39, 39, 255);
 
     & header {
 
@@ -37,7 +37,7 @@ body {
 
             & i {
                 font-size: 4rem;
-                color: white;
+                color: rgb(0, 0, 0);
             }
 
             .fa-diamond {
@@ -52,7 +52,7 @@ body {
 
         .green {
             border: 1px solid rgb(4, 255, 4);
-            box-shadow: 5px 10px rgb(4, 255, 4);
+            animation: mymove 3s infinite;
         }
 
     }
@@ -77,5 +77,11 @@ body {
         position: absolute;
         left: 56.75rem;
         bottom: -5rem;
+    }
+}
+
+@keyframes mymove {
+    50% {
+        box-shadow: 5px 10px 10px greenyellow;
     }
 }
