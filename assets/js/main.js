@@ -7,7 +7,7 @@ console.log(container);
 
 let hard = document.getElementById("hard")
 
-let myArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
+let positionArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 let flipArray = []
 
@@ -28,7 +28,7 @@ function shuffle(array) {
     }
 }
 
-shuffle(myArray);
+shuffle(positionArray);
 
 function verify(array, element) {
     let redElements = document.querySelectorAll(".red")
@@ -131,7 +131,7 @@ function verify(array, element) {
 
 function start() {
 
-    for (let index = 0; index < myArray.length; index++) {
+    for (let index = 0; index < positionArray.length; index++) {
         container.insertAdjacentHTML("beforeend", markup);
     }
 
@@ -146,20 +146,20 @@ function start() {
                 if (child) {
                     element.removeChild(child)
                 }
-                if (myArray[index] == 1) {
+                if (positionArray[index] == 1) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dragon"></i>`);
-                } else if (myArray[index] == 2) {
+                } else if (positionArray[index] == 2) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-otter"></i>`);
-                } else if (myArray[index] == 3) {
+                } else if (positionArray[index] == 3) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-hippo"></i>`);
-                } else if (myArray[index] == 4) {
+                } else if (positionArray[index] == 4) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dog"></i>`);
-                } else if (myArray[index] == 5) {
+                } else if (positionArray[index] == 5) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-cat"></i>`);
-                } else if (myArray[index] == 6) {
+                } else if (positionArray[index] == 6) {
                     element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-frog"></i>`);
                 }
-                flipArray.push(myArray[index])
+                flipArray.push(positionArray[index])
 
                 element.classList.add("red");
                 verify(flipArray, element);
@@ -179,7 +179,7 @@ retry.addEventListener("click", function () {
         box.remove();
     });
     successArray = []
-    shuffle(myArray)
+    shuffle(positionArray)
     start()
 })
 
