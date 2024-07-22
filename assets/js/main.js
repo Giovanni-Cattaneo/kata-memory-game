@@ -168,6 +168,7 @@ function verify(array, element) {
         // }
         if (successArray.length === 6) {
             alert("Congratulazioni, hai vinto!");
+            audio = document.getElementById('victory')
         }
     }
 }
@@ -188,6 +189,9 @@ retry.addEventListener("click", function () {
 })
 
 
-
+window.addEventListener('load', function () {
+    var audio = document.getElementById('myAudio');
+    audio.play();
+});
 
 start();
