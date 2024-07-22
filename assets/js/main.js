@@ -21,6 +21,50 @@ let errorContainer = document.getElementById("error")
 
 let errors = 0
 
+function start() {
+
+    shuffle(positionArray);
+
+    for (let index = 0; index < positionArray.length; index++) {
+        container.insertAdjacentHTML("beforeend", markup);
+    }
+
+
+
+    for (let index = 0; index < boxes.length; index++) {
+        const element = boxes[index];
+
+        element.addEventListener("click", function () {
+            if (!element.classList.contains("red")) {
+                let child = element.querySelector(".fa-diamond")
+                if (child) {
+                    element.removeChild(child)
+                }
+                if (positionArray[index] == 1) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dragon"></i>`);
+                } else if (positionArray[index] == 2) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-otter"></i>`);
+                } else if (positionArray[index] == 3) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-hippo"></i>`);
+                } else if (positionArray[index] == 4) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dog"></i>`);
+                } else if (positionArray[index] == 5) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-cat"></i>`);
+                } else if (positionArray[index] == 6) {
+                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-frog"></i>`);
+                }
+                flipArray.push(positionArray[index])
+
+                element.classList.add("red");
+                verify(flipArray, element);
+            }
+        });
+    }
+}
+
+
+
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -28,7 +72,6 @@ function shuffle(array) {
     }
 }
 
-shuffle(positionArray);
 
 function verify(array, element) {
     let redElements = document.querySelectorAll(".red")
@@ -129,45 +172,6 @@ function verify(array, element) {
     }
 }
 
-function start() {
-
-    for (let index = 0; index < positionArray.length; index++) {
-        container.insertAdjacentHTML("beforeend", markup);
-    }
-
-
-
-    for (let index = 0; index < boxes.length; index++) {
-        const element = boxes[index];
-
-        element.addEventListener("click", function () {
-            if (!element.classList.contains("red")) {
-                let child = element.querySelector(".fa-diamond")
-                if (child) {
-                    element.removeChild(child)
-                }
-                if (positionArray[index] == 1) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dragon"></i>`);
-                } else if (positionArray[index] == 2) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-otter"></i>`);
-                } else if (positionArray[index] == 3) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-hippo"></i>`);
-                } else if (positionArray[index] == 4) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-dog"></i>`);
-                } else if (positionArray[index] == 5) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-cat"></i>`);
-                } else if (positionArray[index] == 6) {
-                    element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-frog"></i>`);
-                }
-                flipArray.push(positionArray[index])
-
-                element.classList.add("red");
-                verify(flipArray, element);
-            }
-        });
-    }
-}
-
 retry.addEventListener("click", function () {
     console.log("hello world")
     console.log(boxes)
@@ -182,5 +186,8 @@ retry.addEventListener("click", function () {
     shuffle(positionArray)
     start()
 })
+
+
+
 
 start();
